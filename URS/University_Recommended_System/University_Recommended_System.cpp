@@ -1,9 +1,13 @@
 #include <iostream>
+#include "Admin.cpp"
+#include "Customer.cpp"
 using namespace std;
 
 int main()
 {
     cout << "Hello World!\n";
+
+    testCustomer();
 
     return 0;
 }
