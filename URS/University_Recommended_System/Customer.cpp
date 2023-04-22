@@ -28,7 +28,7 @@ struct UniversityDetails {
 	double scoreScaled;
 	UniversityDetails* NextAddress;
 
-}*head;
+};
 
 //Create a class for University Details
 class UniversityList {
@@ -39,12 +39,12 @@ public:
 	UniversityList(string university_file) {
 		this->university_file = university_file;
 	}
-	UniversityDetails* createNewNode(int UniID, string universityName, string locationCode, string location, double arScore, int arRank, double erScore, int erRank, double fsrScore, int fsrRank, double cpfScore, int cpfRank, double ifrScore, int ifrRank, double isrScore, int isrRank, double irnScore, int irnRank, double gerScore, int gerRank, double scoreScaled) {
+	UniversityDetails* createNewNode(int id, string universityName, string locationCode, string location, double arScore, int arRank, double erScore, int erRank, double fsrScore, int fsrRank, double cpfScore, int cpfRank, double ifrScore, int ifrRank, double isrScore, int isrRank, double irnScore, int irnRank, double gerScore, int gerRank, double scoreScaled) {
 
 		UniversityDetails* newnode = new UniversityDetails;
 
 		//Fill up all the data
-		newnode->id = UniID;
+		newnode->id = id;
 		newnode->universityName = universityName;
 		newnode->locationCode = locationCode;
 		newnode->location = location;
@@ -71,11 +71,10 @@ public:
 
 	}
 
-
 	//Insert from the back taken from the csv file
-	void Cus_InsertFromTheEnd(int UniID, string universityName, string locationCode, string location, double arScore, int arRank, double erScore, int erRank, double fsrScore, int fsrRank, double cpfScore, int cpfRank, double ifrScore, int ifrRank, double isrScore, int isrRank, double irnScore, int irnRank, double gerScore, int gerRank, double scoreScaled) {
+	void Cus_InsertFromTheEnd(int id, string universityName, string locationCode, string location, double arScore, int arRank, double erScore, int erRank, double fsrScore, int fsrRank, double cpfScore, int cpfRank, double ifrScore, int ifrRank, double isrScore, int isrRank, double irnScore, int irnRank, double gerScore, int gerRank, double scoreScaled) {
 
-		UniversityDetails* newnode = createNewNode(UniID, universityName, locationCode, location, arScore, arRank, erScore, erRank, fsrScore, fsrRank, cpfScore, cpfRank, ifrScore, ifrRank, isrScore, isrRank, irnScore, irnRank, gerScore, gerRank, scoreScaled);
+		UniversityDetails* newnode = createNewNode(id, universityName, locationCode, location, arScore, arRank, erScore, erRank, fsrScore, fsrRank, cpfScore, cpfRank, ifrScore, ifrRank, isrScore, isrRank, irnScore, irnRank, gerScore, gerRank, scoreScaled);
 
 		//check the head
 		if (head == NULL) {
@@ -186,6 +185,7 @@ void testCustomer() {
 
 		//Insert From the Back (Customer View)
 		UniversityFile.Cus_InsertFromTheEnd(stoi(id), universityName, locationCode, location, stod(arScore), stoi(arRank), stod(erScore), stoi(erRank), stod(fsrScore), stoi(fsrRank), stod(cpfScore), stoi(cpfRank), stod(ifrScore), stoi(ifrRank), stod(isrScore), stoi(isrRank), stod(irnScore), stoi(irnRank), stod(gerScore), stoi(gerRank), stod(scoreScaled));
+
 	}
 
 	university_file.close();
