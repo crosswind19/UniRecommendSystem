@@ -31,6 +31,9 @@ struct UniversityDetails {
 
 }*head;
 
+//global value for total details record in csv file
+int totalUniversityDetails = 0;
+
 //Create a class for University Details
 class UniversityList {
 	UniversityDetails* head = NULL;
@@ -139,13 +142,51 @@ public:
 			cout << "University International Student Ratio Rank: " << current->isrRank << endl;
 			cout << "University International Research Network Score: " << current->irnScore << endl;
 			cout << "University International Research Network Rank: " << current->irnRank << endl;
-			cout << "University Employement Outcome: " << current->gerScore << endl;
-			cout << "University Employement Outcome: " << current->gerRank << endl;
+			cout << "University Employement Outcome Score: " << current->gerScore << endl;
+			cout << "University Employement Outcome Rank: " << current->gerRank << endl;
 			cout << "University Score Scaled: " << current->scoreScaled << endl<<endl;
 		
 			current = current->NextAddress;
+			//record the value for total details
+
+			totalUniversityDetails++;
+
 		}
-		cout << "University Details Display Ended Here!" << endl << endl;
+		cout << "University Details Display Ended Here!" << endl;
+		cout << "Total University Details Are:" << totalUniversityDetails << endl << endl;
+	}
+
+	//Question 2.3 Search University Details Based on Customer Decisions
+	void Cus_SearchUniDetails() {
+		int enterNumber;
+		cout << "Please Enter the number of University Details to Search: \n 1. Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n" <<endl;
+		
+		//User Input of Number
+		cin >> enterNumber;
+
+		switch (enterNumber) {
+		case 1:
+			UniversityDetails * current = head;
+
+			//Create an empty array for adding the Rank data (dynamic allocate array)
+			int* UniRankArray = new int[totalUniversityDetails];
+
+			//Adding value into the array
+			for(int i=0; i< totalUniversityDetails; i++){
+				UniRankArray[i] = stoi(current->id);
+
+				current = current->NextAddress;
+				
+			}
+
+
+			//Display the array
+			for (int u = 0; u < totalUniversityDetails; u++) {
+				cout << "Element of Array is: " <<UniRankArray[u]<<endl ;
+
+			}
+		}
+
 	}
 
 };
@@ -230,4 +271,5 @@ void testCustomer() {
 	cout << endl << string(100, '=') << endl;
 
 
+	UniversityFile.Cus_SearchUniDetails();
 }

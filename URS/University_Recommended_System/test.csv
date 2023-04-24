@@ -1,6 +1,6 @@
 ﻿Rank,Institution,LocationCode,Location,ArScore,ArRank,ErScore,ErRank,FsrScore,FsrRank,CpfScore,CpfRank,IfrScore,IfrRank,IsrScore,IsrRank,IrnScore,IrnRank,GerScore,GerRank,ScoreScaled
 1,Massachusetts Institute of Technology (MIT) ,US,United States,100,5,100,4,100,14,100,5,100,54,90,109,96.1,58,100,3,123
-2,University of Cambridge,UK,United Kingdom,100,2,100,2,100,11,92.3,55,100,60,96.3,70,99.5,6,100,9,
+2,University of Cambridge,UK,United Kingdom,100,2,100,2,100,11,92.3,55,100,60,96.3,70,99.5,6,100,9,3
 3,Stanford University,US,United States,100,4,100,5,100,6,99.9,9,99.8,74,60.3,235,96.3,55,100,2,98.5
 4,University of Oxford,UK,United Kingdom,100,3,100,3,100,8,90,64,98.8,101,98.4,54,99.9,3,100,7,98.4
 5,Harvard University,US,United States,100,1,100,1,99.4,35,100,2,76.9,228,66.9,212,100,1,100,1,97.6
@@ -12,5 +12,5 @@
 11,National University of Singapore (NUS),SG,Singapore,99.5,13,94.1,36,79.8,136,91.8,58,100,33,73.5,187,89.9,165,99.6,16,92.7
 12,Peking University,CN,China (Mainland),99.3,15,96.5,28,87.3,98,96.7,34,57.1,323,36.9,376,77.5,354,91.4,59,91.3
 13,University of Pennsylvania,US,United States,96.5,29,92.5,45,99.9,23,70.9,142,96.2,128,66.1,215,93.3,104,100,5,90.6
-14,Tsinghua University,CN,China (Mainland),,,,,,,,,,,,,,,,,
+14,Tsinghua University,CN,China (Mainland),,123,123,456,897,8489,897,156,89,498,15,798,56,79,64,46,648
 15,The University of Edinburgh,UK,United Kingdom,98,26,97.2,24,81.1,129,70.1,149,98.9,98,99.5,38,98.7,15,123,219,89.5
