@@ -156,12 +156,47 @@ public:
 		cout << "Total University Details Are:" << totalUniversityDetails << endl << endl;
 	}
 
+
+	//Binary Search Algorithm
+	int BinarySearchAlgorithm(int arrayValue[], int arraySize, int InputSearchValue) {
+
+		//First Value of the array
+		int firstValue = 0;
+		//Last Value of the array
+		int lastValue = arraySize - 1;
+
+		//Algorithm used for the binary search
+		while (firstValue < lastValue) {
+			//Formula used for finding middle value
+
+			int middleValue = (firstValue + (lastValue - firstValue) / 2);
+			middleValue = middleValue + 1;
+			
+
+			if (arrayValue[middleValue] == InputSearchValue) {
+				return middleValue;
+			}
+			if (arrayValue[middleValue] < InputSearchValue) {
+				firstValue = middleValue + 1;
+			}
+			else {
+				lastValue = middleValue - 1;
+			}
+
+		}
+		return -1;
+	}
+
+
+
 	//Question 2.3 Search University Details Based on Customer Decisions
 	void Cus_SearchUniDetails() {
-		int enterNumber;
+		int enterNumber, search_rank;
+
 		cout << "Please Enter the number of University Details to Search: \n 1. Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n" <<endl;
 		
 		//User Input of Number
+		cout << "Please Select The Number: ";
 		cin >> enterNumber;
 
 		switch (enterNumber) {
@@ -173,18 +208,64 @@ public:
 
 			//Adding value into the array
 			for(int i=0; i< totalUniversityDetails; i++){
-				UniRankArray[i] = stoi(current->id);
+				//Check the first character is it a integer value, if true add in into the array
+				if (isdigit((current->id)[0])) {
+					UniRankArray[i] = stoi(current->id);
+					current = current->NextAddress;
+				}
 
-				current = current->NextAddress;
+			}
+
+			//Input to search the rank
+			cout << "Enter the value of rank to search. ";
+			cin >> search_rank;
+
+			int searchRankResult = BinarySearchAlgorithm(UniRankArray, totalUniversityDetails, search_rank);
+			cout << "Value of resech result is: " << searchRankResult << endl;
+				if (searchRankResult != -1) {
+					//Reason plus one beacase result will reduce 1 in array index
+					cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult + 1<<" index." << endl;
+
+					//Print out that university details
+					//Display the result of search the rank (binary search)
+					UniversityDetails* print = head;
+					while (print != NULL) {
+
+						if ((searchRankResult+1) == stoi(print->id)) {
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							//cout << "University Location Code: " << print->locationCode << endl;
+							//cout << "University Location: " << print->location << endl;
+							//cout << "University Academic Reputation Score: " << print->arScore << endl;
+							//cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							//cout << "University Employer Reputation Score: " << print->erScore << endl;
+							//cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							//cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							//cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							//cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							//cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							//cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							//cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							//cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							//cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							//cout << "University International Research Network Score: " << print->irnScore << endl;
+							//cout << "University International Research Network Rank: " << print->irnRank << endl;
+							//cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							//cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							//cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+						}
+						//Check for next address
+						print = print->NextAddress;
+					}
+					cout << "University Details Display Ended Here!" << endl;
+				}
+				else {
+					cout << search_rank << " Rank value not found!, Please Try Again!" << endl;
+				}
+		
+
 				
-			}
-
-
-			//Display the array
-			for (int u = 0; u < totalUniversityDetails; u++) {
-				cout << "Element of Array is: " <<UniRankArray[u]<<endl ;
-
-			}
 		}
 
 	}
