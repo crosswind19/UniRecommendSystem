@@ -153,13 +153,17 @@ public:
 
 		}
 		cout << "University Details Display Ended Here!" << endl;
-		cout << "Total University Details Are:" << totalUniversityDetails << endl << endl;
+		cout << "Total University Details Are: " << totalUniversityDetails << endl << endl;
+
+
 	}
 
 
 	//Binary Search Algorithm
 	int BinarySearchAlgorithm(int arrayValue[], int arraySize, int InputSearchValue) {
-
+		for (int i = 0; i < arraySize + 1; i++) {
+			cout<< arrayValue[i] <<endl;
+		}
 		//First Value of the array
 		int firstValue = 0;
 		//Last Value of the array
@@ -170,16 +174,19 @@ public:
 			//Formula used for finding middle value
 
 			int middleValue = (firstValue + (lastValue - firstValue) / 2);
-			middleValue = middleValue + 1;
-			
 
+
+			//if the middle value match with the customer search value
 			if (arrayValue[middleValue] == InputSearchValue) {
 				return middleValue;
 			}
+			//if the middle value less than the customer search value
 			if (arrayValue[middleValue] < InputSearchValue) {
+				//first value will become value after the middle value
 				firstValue = middleValue + 1;
 			}
 			else {
+				//last value will become the value less than middle value
 				lastValue = middleValue - 1;
 			}
 
@@ -208,12 +215,19 @@ public:
 
 			//Adding value into the array
 			for(int i=0; i< totalUniversityDetails; i++){
-				//Check the first character is it a integer value, if true add in into the array
-				if (isdigit((current->id)[0])) {
-					UniRankArray[i] = stoi(current->id);
-					current = current->NextAddress;
+				if ((current->id).find("Rank")) {
+					continue;
 				}
-
+				else {
+					//UniRankArray[0] = 0;
+					//Check the first character is it a integer value, if true add in into the array
+					
+						UniRankArray[i] = stoi(current->id);
+						current = current->NextAddress;
+					
+				
+					////////////////////////////////////////////////////////////problem here, will giving negative value
+				}
 			}
 
 			//Input to search the rank
@@ -221,13 +235,13 @@ public:
 			cin >> search_rank;
 
 			int searchRankResult = BinarySearchAlgorithm(UniRankArray, totalUniversityDetails, search_rank);
-			cout << "Value of resech result is: " << searchRankResult << endl;
+
 				if (searchRankResult != -1) {
 					//Reason plus one beacase result will reduce 1 in array index
-					cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult + 1<<" index." << endl;
+					cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult+1<<" index." << endl;
 
 					//Print out that university details
-					//Display the result of search the rank (binary search)
+                    //Display the result of search the rank (binary search)
 					UniversityDetails* print = head;
 					while (print != NULL) {
 
@@ -259,12 +273,12 @@ public:
 						print = print->NextAddress;
 					}
 					cout << "University Details Display Ended Here!" << endl;
+
 				}
 				else {
 					cout << search_rank << " Rank value not found!, Please Try Again!" << endl;
 				}
 		
-
 				
 		}
 
