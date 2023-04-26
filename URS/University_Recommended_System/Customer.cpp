@@ -1,6 +1,7 @@
 #include <iostream>
 #include<fstream>
 #include <string>
+#include <regex>
 using namespace std;
 
 //Create the structure of University Details
@@ -154,23 +155,21 @@ public:
 		}
 		cout << "University Details Display Ended Here!" << endl;
 		cout << "Total University Details Are: " << totalUniversityDetails << endl << endl;
-
+		
 
 	}
 
 
 	//Binary Search Algorithm
 	int BinarySearchAlgorithm(int arrayValue[], int arraySize, int InputSearchValue) {
-		for (int i = 0; i < arraySize + 1; i++) {
-			cout<< arrayValue[i] <<endl;
-		}
+
 		//First Value of the array
 		int firstValue = 0;
 		//Last Value of the array
 		int lastValue = arraySize - 1;
 
 		//Algorithm used for the binary search
-		while (firstValue < lastValue) {
+		while (firstValue <= lastValue) {
 			//Formula used for finding middle value
 
 			int middleValue = (firstValue + (lastValue - firstValue) / 2);
@@ -179,6 +178,7 @@ public:
 			//if the middle value match with the customer search value
 			if (arrayValue[middleValue] == InputSearchValue) {
 				return middleValue;
+				break;
 			}
 			//if the middle value less than the customer search value
 			if (arrayValue[middleValue] < InputSearchValue) {
@@ -211,24 +211,17 @@ public:
 			UniversityDetails * current = head;
 
 			//Create an empty array for adding the Rank data (dynamic allocate array)
-			int* UniRankArray = new int[totalUniversityDetails];
+			int* UniRankArray = new int[totalUniversityDetails+1];
 
 			//Adding value into the array
-			for(int i=0; i< totalUniversityDetails; i++){
-				if ((current->id).find("Rank")) {
-					continue;
-				}
-				else {
-					//UniRankArray[0] = 0;
-					//Check the first character is it a integer value, if true add in into the array
-					
-						UniRankArray[i] = stoi(current->id);
-						current = current->NextAddress;
-					
-				
-					////////////////////////////////////////////////////////////problem here, will giving negative value
-				}
+			for(int i=0; i<totalUniversityDetails; i++){
+				if ((stoi(current->id) > 0)) {
+					UniRankArray[i] = stoi(current->id);
+					current = current->NextAddress;
+				}	
 			}
+
+			
 
 			//Input to search the rank
 			cout << "Enter the value of rank to search. ";
@@ -238,7 +231,7 @@ public:
 
 				if (searchRankResult != -1) {
 					//Reason plus one beacase result will reduce 1 in array index
-					cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult+1<<" index." << endl;
+					//cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult+1<<" index." << endl<<endl;
 
 					//Print out that university details
                     //Display the result of search the rank (binary search)
@@ -246,6 +239,7 @@ public:
 					while (print != NULL) {
 
 						if ((searchRankResult+1) == stoi(print->id)) {
+
 							cout << "University Rank: " << print->id << endl;
 							cout << "University Name: " << print->universityName << endl;
 							//cout << "University Location Code: " << print->locationCode << endl;
@@ -268,6 +262,7 @@ public:
 							//cout << "University Employement Outcome Rank: " << print->gerRank << endl;
 							//cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
 
+							break;
 						}
 						//Check for next address
 						print = print->NextAddress;
@@ -294,7 +289,6 @@ void testCustomer() {
 
 	//CSV file of 2023 QS World University Ranking 
 	string id, universityName, locationCode, location, arScore, erScore, fsrScore, cpfScore, ifrScore, isrScore, irnScore, gerScore, scoreScaled, arRank, erRank, fsrRank, cpfRank, ifrRank, isrRank, irnRank, gerRank;
-
 	//Start Read CSV file
 	ifstream university_file("test.csv");
 
@@ -327,7 +321,7 @@ void testCustomer() {
 		}
 		//if there is no more line
 		else if (id == "") {
-			break;
+			break;	
 		}
 
 		//Check if there is an empty value for Rank Data, if found replace with -1
@@ -353,6 +347,7 @@ void testCustomer() {
 			gerScore = "9999";
 			scoreScaled = "9999";
 		}
+
 
 
 		//Insert From the Back (Customer View)
