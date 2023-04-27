@@ -229,6 +229,7 @@ public:
 
 		
 		//Check the case number
+		//Rank Search Details
 		if (inputNumber == 1) {
 			//Adding value into the array
 			for (int i = 0; i < totalUniversityDetails; i++) {
@@ -319,21 +320,49 @@ public:
 			}
 
 		}
+		//Score Search Details
+		else if (inputNumber == 10) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->arScore) > 0)) {
+					UniRankArray[i] = (current->arScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
 		else {
 			cout << "Please Try Again!, Input Number Error!" << endl;
 		}
 
-
-
 		//Sorting Done here
-		BubbleSortAlgorithm(UniRankArray, totalUniversityDetails);
+		if (inputNumber <= 9) {
+			BubbleSortAlgorithm(UniRankArray, totalUniversityDetails);
+
+		}
+
+
+		//Linear Search Algorithm
+		void LinearSearchAlgorithm(int arrayValue[], int size, int searchNumber) {
+			//Create an array to store all the similiar search result
+
+			//for loop to loop through all the element in arrayValue
+			for (int linear = 0; linear < size; linear++) {
+				if (arrayValue[linear] == searchNumber) {
+
+				}
+			}
+
+		}
 
 
 		//Input to search the rank
 		cout << "Enter the value of rank to search. ";
 		cin >> search_rank;
 
+		//Binary Search Algorithm
 		int searchRankResult = BinarySearchAlgorithm(UniRankArray, totalUniversityDetails, search_rank);
+
 
 		if (searchRankResult != -1) {
 			//Reason plus one beacase result will reduce 1 in array index
@@ -603,8 +632,37 @@ public:
 
 						break;
 					}
-					}
+				}
 
+				//Score
+				else if (inputNumber == 10) {
+					if ((searchScoreResult + 1) == (print->arScore)) {
+
+						cout << "University Rank: " << print->id << endl;
+						cout << "University Name: " << print->universityName << endl;
+						cout << "University Location Code: " << print->locationCode << endl;
+						cout << "University Location: " << print->location << endl;
+						cout << "University Academic Reputation Score: " << print->arScore << endl;
+						cout << "University Academic Reputation Rank: " << print->arRank << endl;
+						cout << "University Employer Reputation Score: " << print->erScore << endl;
+						cout << "University Employer Reputation Rank: " << print->erRank << endl;
+						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+						cout << "University International Student Ratio Score: " << print->isrScore << endl;
+						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+						cout << "University International Research Network Score: " << print->irnScore << endl;
+						cout << "University International Research Network Rank: " << print->irnRank << endl;
+						cout << "University Employement Outcome Score: " << print->gerScore << endl;
+						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+						
+					}
+				}
 
 
 				//Check for next address
@@ -624,13 +682,14 @@ public:
 	void Cus_SearchUniDetails() {
 		int enterNumber, search_rank;
 
-		cout << "Please Enter the number of University Details to Search: \n 1. University Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n" <<endl;
+		cout << "Please Enter the number of University Details to Search: \n 1. University Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n 10. University Academic Reputation Score" <<endl;
 		
 		//User Input of Number
 		cout << "Please Select The Number: ";
 		cin >> enterNumber;
 
 		switch (enterNumber) {
+		//Rank
 		case 1:
 			searchUniversityRankDetails(1);
 			break;
@@ -658,7 +717,13 @@ public:
 		case 9:
 			searchUniversityRankDetails(9);
 			break;
+
+		//Score
+		case 10:
+			searchUniversityRankDetails(10);
+			break;
 		}
+
 	}
 
 };
