@@ -242,25 +242,25 @@ public:
 
 							cout << "University Rank: " << print->id << endl;
 							cout << "University Name: " << print->universityName << endl;
-							//cout << "University Location Code: " << print->locationCode << endl;
-							//cout << "University Location: " << print->location << endl;
-							//cout << "University Academic Reputation Score: " << print->arScore << endl;
-							//cout << "University Academic Reputation Rank: " << print->arRank << endl;
-							//cout << "University Employer Reputation Score: " << print->erScore << endl;
-							//cout << "University Employer Reputation Rank: " << print->erRank << endl;
-							//cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-							//cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-							//cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-							//cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-							//cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-							//cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-							//cout << "University International Student Ratio Score: " << print->isrScore << endl;
-							//cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-							//cout << "University International Research Network Score: " << print->irnScore << endl;
-							//cout << "University International Research Network Rank: " << print->irnRank << endl;
-							//cout << "University Employement Outcome Score: " << print->gerScore << endl;
-							//cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-							//cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
 
 							break;
 						}
@@ -287,33 +287,152 @@ void testCustomer() {
 
 	UniversityList UniversityFile("2023 QS World University Ranking");
 
-	//CSV file of 2023 QS World University Ranking 
-	string id, universityName, locationCode, location, arScore, erScore, fsrScore, cpfScore, ifrScore, isrScore, irnScore, gerScore, scoreScaled, arRank, erRank, fsrRank, cpfRank, ifrRank, isrRank, irnRank, gerRank;
-	//Start Read CSV file
-	ifstream university_file("test.csv");
 
-	while (university_file.good()) {
-		getline(university_file, id, ',');
-		getline(university_file, universityName, ',');
-		getline(university_file, locationCode, ',');
-		getline(university_file, location, ',');
-		getline(university_file, arScore, ',');
-		getline(university_file, arRank, ',');
-		getline(university_file, erScore, ',');
-		getline(university_file, erRank, ',');
-		getline(university_file, fsrScore, ',');
-		getline(university_file, fsrRank, ',');
-		getline(university_file, cpfScore, ',');
-		getline(university_file, cpfRank, ',');
-		getline(university_file, ifrScore, ',');
-		getline(university_file, ifrRank, ',');
-		getline(university_file, isrScore, ',');
-		getline(university_file, isrRank, ',');
-		getline(university_file, irnScore, ',');
-		getline(university_file, irnRank, ',');
-		getline(university_file, gerScore, ',');
-		getline(university_file, gerRank, ',');
-		getline(university_file, scoreScaled);
+	//CSV file of 2023 QS World University Ranking 
+	string tempLine;
+	//Start Read CSV file
+	ifstream university_file("2023 QS World University Rankings.csv");
+	getline(university_file, tempLine);
+	while (getline(university_file, tempLine)) {
+		string id, universityName, locationCode, location, arScore, erScore, fsrScore, cpfScore, ifrScore, isrScore, irnScore, gerScore, scoreScaled, arRank, erRank, fsrRank, cpfRank, ifrRank, isrRank, irnRank, gerRank;
+
+		//Read University Ranking (ID)
+		int pos_id = tempLine.find(",");
+		id = tempLine.substr(0, pos_id);
+		tempLine.erase(0, pos_id + 1);
+
+		//Read the University Name
+		if (tempLine[0] == '\"')
+		{
+			//If Name contains a comma
+			int pos_name = tempLine.find("\",");
+			universityName = tempLine.substr(1, pos_name - 1);
+			tempLine.erase(0, pos_name + 2);
+		}
+		else
+		{
+			//If name does not contain a comma
+			int pos_name = tempLine.find(",");
+			universityName = tempLine.substr(0, pos_name);
+			tempLine.erase(0, pos_name + 1);
+		}
+
+		//Read the location code
+		int pos_locationCode = tempLine.find(",");
+		locationCode = tempLine.substr(0, pos_locationCode);
+		tempLine.erase(0, pos_locationCode + 1);
+
+
+		//Read the Location 
+		if (tempLine[0] == '\"')
+		{
+			//If Location contains a comma
+			int pos_location = tempLine.find("\",");
+			location = tempLine.substr(1, pos_location - 1);
+			tempLine.erase(0, pos_location + 2);
+		}
+		else
+		{
+			//If Location does not contain a comma
+			int pos_location = tempLine.find(",");
+			location = tempLine.substr(0, pos_location);
+			tempLine.erase(0, pos_location + 1);
+		}
+
+
+
+
+
+		int pos_arScore = tempLine.find(",");
+		arScore = tempLine.substr(0, pos_arScore);
+		tempLine.erase(0, pos_arScore + 1);
+
+		int pos_arRank = tempLine.find(",");
+		arRank = tempLine.substr(0, pos_arRank);
+		tempLine.erase(0, pos_arRank + 1);
+
+		int pos_erScore = tempLine.find(",");
+		erScore = tempLine.substr(0, pos_erScore);
+		tempLine.erase(0, pos_erScore + 1);
+
+		int pos_erRank = tempLine.find(",");
+		erRank = tempLine.substr(0, pos_erRank);
+		tempLine.erase(0, pos_erRank + 1);
+		
+		int pos_fsrScore = tempLine.find(",");
+		fsrScore = tempLine.substr(0, pos_fsrScore);
+		tempLine.erase(0, pos_fsrScore + 1);
+
+		int pos_fsrRank = tempLine.find(",");
+		fsrRank = tempLine.substr(0, pos_fsrRank);
+		tempLine.erase(0, pos_fsrRank + 1);
+
+		int pos_cpfScore = tempLine.find(",");
+		cpfScore = tempLine.substr(0, pos_cpfScore);
+		tempLine.erase(0, pos_cpfScore + 1);
+		
+		int pos_cpfRank = tempLine.find(",");
+		cpfRank = tempLine.substr(0, pos_cpfRank);
+		tempLine.erase(0, pos_cpfRank + 1);
+
+		int pos_ifrScore = tempLine.find(",");
+		ifrScore = tempLine.substr(0, pos_ifrScore);
+		tempLine.erase(0, pos_ifrScore + 1);
+
+		int pos_ifrRank = tempLine.find(",");
+		ifrRank = tempLine.substr(0, pos_ifrRank);
+		tempLine.erase(0, pos_ifrRank + 1);
+
+		int pos_isrScore = tempLine.find(",");
+		isrScore = tempLine.substr(0, pos_isrScore);
+		tempLine.erase(0, pos_isrScore + 1);
+
+		int pos_isrRank = tempLine.find(",");
+		isrRank = tempLine.substr(0, pos_isrRank);
+		tempLine.erase(0, pos_isrRank + 1);
+
+		int pos_irnScore = tempLine.find(",");
+		irnScore = tempLine.substr(0, pos_irnScore);
+		tempLine.erase(0, pos_irnScore + 1);
+
+		int pos_irnRank = tempLine.find(",");
+		irnRank = tempLine.substr(0, pos_irnRank);
+		tempLine.erase(0, pos_irnRank + 1);
+
+		int pos_gerScore = tempLine.find(",");
+		gerScore = tempLine.substr(0, pos_gerScore);
+		tempLine.erase(0, pos_gerScore + 1);
+
+		int pos_gerRank = tempLine.find(",");
+		gerRank = tempLine.substr(0, pos_gerRank);
+		tempLine.erase(0, pos_gerRank + 1);
+
+		scoreScaled = tempLine;
+
+	
+
+	//while (university_file.good()) {
+	//	getline(university_file, id, ',');
+	//	getline(university_file, universityName, ',');
+	//	getline(university_file, locationCode, ',');
+	//	getline(university_file, location, ',');
+	//	getline(university_file, arScore, ',');
+	//	getline(university_file, arRank, ',');
+	//	getline(university_file, erScore, ',');
+	//	getline(university_file, erRank, ',');
+	//	getline(university_file, fsrScore, ',');
+	//	getline(university_file, fsrRank, ',');
+	//	getline(university_file, cpfScore, ',');
+	//	getline(university_file, cpfRank, ',');
+	//	getline(university_file, ifrScore, ',');
+	//	getline(university_file, ifrRank, ',');
+	//	getline(university_file, isrScore, ',');
+	//	getline(university_file, isrRank, ',');
+	//	getline(university_file, irnScore, ',');
+	//	getline(university_file, irnRank, ',');
+	//	getline(university_file, gerScore, ',');
+	//	getline(university_file, gerRank, ',');
+	//	getline(university_file, scoreScaled);
 
 		//if the first line is header details, ignore that line
 		if (id == "Rank" || universityName == "Institution") {
@@ -337,18 +456,21 @@ void testCustomer() {
 		}
 		//Check if there is an empty value for Score Data, if found replace with 9999
 		if (arScore.empty() || erScore.empty() || fsrScore.empty() || cpfScore.empty() || ifrScore.empty() || isrScore.empty() || irnScore.empty() || gerScore.empty() || scoreScaled.empty()) {
-			arScore = "9999";
-			erScore = "9999";
-			fsrScore = "9999";
-			cpfScore = "9999";
-			ifrScore = "9999";
-			isrScore = "9999";
-			irnScore = "9999";
-			gerScore = "9999";
-			scoreScaled = "9999";
+			arScore = "0";
+			erScore = "0";
+			fsrScore = "0";
+			cpfScore = "0";
+			ifrScore = "0";
+			isrScore = "0";
+			irnScore = "0";
+			gerScore = "0";
+			scoreScaled = "0";
 		}
 
-
+		//If there is a dash in scorescaled
+		if (scoreScaled == "-") {
+			scoreScaled = "0";
+		}
 
 		//Insert From the Back (Customer View)
 		UniversityFile.Cus_InsertFromTheEnd(id, universityName, locationCode, location, stod(arScore), stoi(arRank), stod(erScore), stoi(erRank), stod(fsrScore), stoi(fsrRank), stod(cpfScore), stoi(cpfRank), stod(ifrScore), stoi(ifrRank), stod(isrScore), stoi(isrRank), stod(irnScore), stoi(irnRank), stod(gerScore), stoi(gerRank), stod(scoreScaled));
