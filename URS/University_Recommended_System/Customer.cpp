@@ -219,6 +219,137 @@ public:
 		}
 	}
 
+	//Linear Search Algorithm for Score
+	void LinearSearchAlgorithm(double arrayValue[], int size, double searchNumber) {
+		UniversityDetails* print = head;
+		int found = 0;
+		//for loop to loop through all the element in arrayValue	
+
+		for (int linear = 0; linear < size; linear++) {
+			if (arrayValue[linear] == searchNumber) {
+
+				cout << "University Rank: " << print->id << endl;
+				cout << "University Name: " << print->universityName << endl;
+				cout << "University Location Code: " << print->locationCode << endl;
+				cout << "University Location: " << print->location << endl;
+				cout << "University Academic Reputation Score: " << print->arScore << endl;
+				cout << "University Academic Reputation Rank: " << print->arRank << endl;
+				cout << "University Employer Reputation Score: " << print->erScore << endl;
+				cout << "University Employer Reputation Rank: " << print->erRank << endl;
+				cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+				cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+				cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+				cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+				cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+				cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+				cout << "University International Student Ratio Score: " << print->isrScore << endl;
+				cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+				cout << "University International Research Network Score: " << print->irnScore << endl;
+				cout << "University International Research Network Rank: " << print->irnRank << endl;
+				cout << "University Employement Outcome Score: " << print->gerScore << endl;
+				cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+				cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+				found++;
+			}
+			
+			print = print->NextAddress;
+		}
+		if (found == 0) {
+			cout << "None of the Score Result Found, Please Try Again!" << endl;
+
+		}
+	}
+
+
+
+	//Linear Search Algorithm for University Name
+	void LinearSearchAlgorithm_UniversityName(string arrayValue[], int size, string searchName) {
+		UniversityDetails* print = head;
+		int counter = 0;
+		int enterNum;
+
+		cout << "1. Exact Match\n2. Partial Match ";
+		cin >> enterNum;
+		cout << endl;
+
+		//Based on user selection
+		if (enterNum == 1) {
+			//Exact Match
+			for (int linear = 0; linear < size; linear++) {
+				if (arrayValue[linear] == searchName) {
+					cout << "University Rank: " << print->id << endl;
+					cout << "University Name: " << print->universityName << endl;
+					cout << "University Location Code: " << print->locationCode << endl;
+					cout << "University Location: " << print->location << endl;
+					cout << "University Academic Reputation Score: " << print->arScore << endl;
+					cout << "University Academic Reputation Rank: " << print->arRank << endl;
+					cout << "University Employer Reputation Score: " << print->erScore << endl;
+					cout << "University Employer Reputation Rank: " << print->erRank << endl;
+					cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+					cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+					cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+					cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+					cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+					cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+					cout << "University International Student Ratio Score: " << print->isrScore << endl;
+					cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+					cout << "University International Research Network Score: " << print->irnScore << endl;
+					cout << "University International Research Network Rank: " << print->irnRank << endl;
+					cout << "University Employement Outcome Score: " << print->gerScore << endl;
+					cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+					cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+					counter++;
+					break;
+				}
+
+				print = print->NextAddress;
+			}
+			if (counter == 0) {
+				cout << searchName << " Not Found, Please Try Again!" << endl;
+			}
+		}
+		else if (enterNum == 2) {
+			//Partial Match
+			for (int linear = 0; linear < size; linear++) {
+				if (arrayValue[linear].find(searchName) != string::npos) {
+					cout << "University Rank: " << print->id << endl;
+					cout << "University Name: " << print->universityName << endl;
+					cout << "University Location Code: " << print->locationCode << endl;
+					cout << "University Location: " << print->location << endl;
+					cout << "University Academic Reputation Score: " << print->arScore << endl;
+					cout << "University Academic Reputation Rank: " << print->arRank << endl;
+					cout << "University Employer Reputation Score: " << print->erScore << endl;
+					cout << "University Employer Reputation Rank: " << print->erRank << endl;
+					cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+					cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+					cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+					cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+					cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+					cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+					cout << "University International Student Ratio Score: " << print->isrScore << endl;
+					cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+					cout << "University International Research Network Score: " << print->irnScore << endl;
+					cout << "University International Research Network Rank: " << print->irnRank << endl;
+					cout << "University Employement Outcome Score: " << print->gerScore << endl;
+					cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+					cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+					counter++;
+				
+				}
+
+				print = print->NextAddress;
+			}
+			if (counter == 0) {
+				cout << searchName << " Not Found, Please Try Again!" << endl;
+			}
+		}
+		
+	}
+
+
 
 	//This is the binary search for allow customer to search based on university details
 	void searchUniversityRankDetails(int inputNumber) {
@@ -226,7 +357,8 @@ public:
 		int search_rank;
 		//Create an empty array for adding the Rank data (dynamic allocate array)
 		int* UniRankArray = new int[totalUniversityDetails + 1];
-
+		double* UniScoreArray = new double[totalUniversityDetails + 1];
+		string* UniNameArray = new string[totalUniversityDetails + 1];
 		
 		//Check the case number
 		//Rank Search Details
@@ -325,355 +457,467 @@ public:
 			//Adding value into the array
 			for (int i = 0; i < totalUniversityDetails; i++) {
 				if (((current->arScore) > 0)) {
-					UniRankArray[i] = (current->arScore);
+					UniScoreArray[i] = (current->arScore);
 					current = current->NextAddress;
 				}
 			}
 
+		}
+		else if (inputNumber == 11) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->erScore) > 0)) {
+					UniScoreArray[i] = (current->erScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 12) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->fsrScore) > 0)) {
+					UniScoreArray[i] = (current->fsrScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 13) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->cpfScore) > 0)) {
+					UniScoreArray[i] = (current->cpfScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 14) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->ifrScore) > 0)) {
+					UniScoreArray[i] = (current->ifrScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 15) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->isrScore) > 0)) {
+					UniScoreArray[i] = (current->isrScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 16) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->irnScore) > 0)) {
+					UniScoreArray[i] = (current->irnScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		else if (inputNumber == 17) {
+			//Adding value into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if (((current->gerScore) > 0)) {
+					UniScoreArray[i] = (current->gerScore);
+					current = current->NextAddress;
+				}
+			}
+
+		}
+		//UniNameArray
+		else if (inputNumber == 18) {
+			//Adding all the university name into the array
+			for (int i = 0; i < totalUniversityDetails; i++) {
+				if ((current->universityName).length() > 0) {
+					UniNameArray[i] = (current->universityName);
+					current = current->NextAddress;
+				}
+			}
 		}
 		else {
 			cout << "Please Try Again!, Input Number Error!" << endl;
 		}
 
 		//Sorting Done here
-		if (inputNumber <= 9) {
+		if (inputNumber >0 && inputNumber <= 9) {
 			BubbleSortAlgorithm(UniRankArray, totalUniversityDetails);
 
-		}
+		
 
 
-		//Linear Search Algorithm
-		void LinearSearchAlgorithm(int arrayValue[], int size, int searchNumber) {
-			//Create an array to store all the similiar search result
+			//Input to search the rank
+			cout << "Enter The Value Of Rank To Search. ";
+			cin >> search_rank;
+			cout << endl;
 
-			//for loop to loop through all the element in arrayValue
-			for (int linear = 0; linear < size; linear++) {
-				if (arrayValue[linear] == searchNumber) {
+			//Binary Search Algorithm
+			int searchRankResult = BinarySearchAlgorithm(UniRankArray, totalUniversityDetails, search_rank);
 
+
+			if (searchRankResult != -1) {
+				//Reason plus one beacase result will reduce 1 in array index
+				//cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult+1<<" index." << endl<<endl;
+				//count what is the gap between the rank and the actual array element
+				int numberLeft = 0;
+				if ((searchRankResult + 1 >= search_rank)) {
+					numberLeft = ((searchRankResult + 1) - search_rank);
+				}
+				else {
+					numberLeft = (search_rank - (searchRankResult + 1));
+				}
+
+				//Print out that university details
+				//Display the result of search the rank (binary search)
+				UniversityDetails* print = head;
+				while (print != NULL) {
+					if (inputNumber == 1) {
+
+						if ((searchRankResult + 1) == stoi(print->id)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 2) {
+						if ((searchRankResult + 1 + numberLeft) == (print->arRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 3) {
+						if ((searchRankResult + 1 + numberLeft) == (print->erRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 4) {
+						if ((searchRankResult + 1 + numberLeft) == (print->fsrRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 5) {
+						if ((searchRankResult + 1 + numberLeft) == (print->cpfRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 6) {
+						if ((searchRankResult + 1 + numberLeft) == (print->ifrRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 7) {
+						if ((searchRankResult + 1 + numberLeft) == (print->isrRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 8) {
+						if ((searchRankResult + 1 + numberLeft) == (print->irnRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+					else if (inputNumber == 9) {
+						if ((searchRankResult + 1 + numberLeft) == (print->gerRank)) {
+
+							cout << "University Rank: " << print->id << endl;
+							cout << "University Name: " << print->universityName << endl;
+							cout << "University Location Code: " << print->locationCode << endl;
+							cout << "University Location: " << print->location << endl;
+							cout << "University Academic Reputation Score: " << print->arScore << endl;
+							cout << "University Academic Reputation Rank: " << print->arRank << endl;
+							cout << "University Employer Reputation Score: " << print->erScore << endl;
+							cout << "University Employer Reputation Rank: " << print->erRank << endl;
+							cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
+							cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
+							cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
+							cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
+							cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
+							cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
+							cout << "University International Student Ratio Score: " << print->isrScore << endl;
+							cout << "University International Student Ratio Rank: " << print->isrRank << endl;
+							cout << "University International Research Network Score: " << print->irnScore << endl;
+							cout << "University International Research Network Rank: " << print->irnRank << endl;
+							cout << "University Employement Outcome Score: " << print->gerScore << endl;
+							cout << "University Employement Outcome Rank: " << print->gerRank << endl;
+							cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+
+							break;
+						}
+					}
+
+
+					//Check for next address
+					print = print->NextAddress;
 				}
 			}
+				cout << "University Details Display Ended Here!" << endl;
 
 		}
 
 
-		//Input to search the rank
-		cout << "Enter the value of rank to search. ";
-		cin >> search_rank;
+		//Score
+		else if (inputNumber > 9 && inputNumber <18) {
 
-		//Binary Search Algorithm
-		int searchRankResult = BinarySearchAlgorithm(UniRankArray, totalUniversityDetails, search_rank);
-
-
-		if (searchRankResult != -1) {
-			//Reason plus one beacase result will reduce 1 in array index
-			//cout << search_rank << " Rank value found!"<<" located in "<< searchRankResult+1<<" index." << endl<<endl;
-			//count what is the gap between the rank and the actual array element
-			int numberLeft = 0;
-			if ((searchRankResult + 1 >= search_rank)) {
-				numberLeft = ((searchRankResult + 1) - search_rank);
-			}
-			else {
-				numberLeft = (search_rank - (searchRankResult+1));
-			}
+			double search_score;
+			//Input to search the Score
+			cout << "Enter The Value Of Score To Search. ";
+			cin >> search_score;
+			cout << endl;
 
 			//Print out that university details
-			//Display the result of search the rank (binary search)
-			UniversityDetails* print = head;
-			while (print != NULL) {
-				if (inputNumber == 1) {
+				//Display the result of search the rank (binary search)
 
-					if ((searchRankResult + 1) == stoi(print->id)) {
+				while (true) {
 
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					if (inputNumber == 10) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 2) {
-					if ((searchRankResult+1+numberLeft) == (print->arRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 11) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 3) {
-					if ((searchRankResult + 1 + numberLeft) == (print->erRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 12) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 4) {
-					if ((searchRankResult + 1 + numberLeft) == (print->fsrRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 13) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 5) {
-					if ((searchRankResult + 1 + numberLeft) == (print->cpfRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 14) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 6) {
-					if ((searchRankResult + 1 + numberLeft) == (print->ifrRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 15) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 7) {
-					if ((searchRankResult + 1 + numberLeft) == (print->isrRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 16) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 8) {
-					if ((searchRankResult + 1 + numberLeft) == (print->irnRank)) {
-
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
+					else if (inputNumber == 17) {
+						LinearSearchAlgorithm(UniScoreArray, totalUniversityDetails, search_score);
 						break;
 					}
-				}
-				else if (inputNumber == 9) {
-					if ((searchRankResult + 1 + numberLeft) == (print->gerRank)) {
 
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
-
-						break;
+					else {
+						false;
 					}
+
 				}
+		}
+		//Else if for university name (18)
+		else if (inputNumber == 18) {
 
-				//Score
-				else if (inputNumber == 10) {
-					if ((searchScoreResult + 1) == (print->arScore)) {
+			string searchUniName;
+			//Input to search the University Name
+			cout << "Enter The Value Of University Name To Search. ";
+			//Allow White Spaces to be Entered
 
-						cout << "University Rank: " << print->id << endl;
-						cout << "University Name: " << print->universityName << endl;
-						cout << "University Location Code: " << print->locationCode << endl;
-						cout << "University Location: " << print->location << endl;
-						cout << "University Academic Reputation Score: " << print->arScore << endl;
-						cout << "University Academic Reputation Rank: " << print->arRank << endl;
-						cout << "University Employer Reputation Score: " << print->erScore << endl;
-						cout << "University Employer Reputation Rank: " << print->erRank << endl;
-						cout << "Univetsity Faculty/Student Ratio Score: " << print->fsrScore << endl;
-						cout << "University Faculty/Student Ratio Rank: " << print->fsrRank << endl;
-						cout << "University Citations Per Faculty Score: " << print->cpfScore << endl;
-						cout << "University Citations Per Faculty Rank: " << print->cpfRank << endl;
-						cout << "University International Faculty Ratio Score: " << print->ifrScore << endl;
-						cout << "University International Faculty Ratio Rank: " << print->ifrRank << endl;
-						cout << "University International Student Ratio Score: " << print->isrScore << endl;
-						cout << "University International Student Ratio Rank: " << print->isrRank << endl;
-						cout << "University International Research Network Score: " << print->irnScore << endl;
-						cout << "University International Research Network Rank: " << print->irnRank << endl;
-						cout << "University Employement Outcome Score: " << print->gerScore << endl;
-						cout << "University Employement Outcome Rank: " << print->gerRank << endl;
-						cout << "University Score Scaled: " << print->scoreScaled << endl << endl;
+			getline(cin >> ws, searchUniName);
+			cout << endl;
 
-						
-					}
+			while (true) {
+				if (inputNumber == 18) {
+					LinearSearchAlgorithm_UniversityName(UniNameArray, totalUniversityDetails, searchUniName);
+					break;
 				}
-
-
-				//Check for next address
-				print = print->NextAddress;
 			}
-			cout << "University Details Display Ended Here!" << endl;
-
 		}
 		else {
-			cout << search_rank << " Rank value not found!, Please Try Again!" << endl;
+			cout << "Input Number Error, Please Select The Correct Numbering!" << endl;
 		}
+
 	}
 
 
@@ -682,7 +926,7 @@ public:
 	void Cus_SearchUniDetails() {
 		int enterNumber, search_rank;
 
-		cout << "Please Enter the number of University Details to Search: \n 1. University Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n 10. University Academic Reputation Score" <<endl;
+		cout << "Please Enter the number of University Details to Search: \n 1. University Rank\n 2. University Academic Reputation Rank\n 3. University Employer Reputation Rank\n 4. University Faculty/Student Ratio Rank\n 5. University Citations Per Faculty Rank\n 6. University International Faculty Ratio Rank\n 7. University International Student Ratio Rank\n 8. University International Research Network Rank\n 9. University Employement Outcome Rank\n 10. University Academic Reputation Score\n 11. University Employer Reputation Score\n 12. University Faculty/Student Ratio Score\n 13. University Citations Per Faculty Score\n 14. University International Faculty Ratio Score\n 15. University International Student Ratio Score\n 16. University International Research Network Score\n 17. University Employer Outcome Score\n 18. University Name\n" <<endl;
 		
 		//User Input of Number
 		cout << "Please Select The Number: ";
@@ -722,8 +966,34 @@ public:
 		case 10:
 			searchUniversityRankDetails(10);
 			break;
+		case 11:
+			searchUniversityRankDetails(11);
+			break;
+		case 12:
+			searchUniversityRankDetails(12);
+			break;
+		case 13:
+			searchUniversityRankDetails(13);
+			break;
+		case 14:
+			searchUniversityRankDetails(14);
+			break;
+		case 15:
+			searchUniversityRankDetails(15);
+			break;
+		case 16:
+			searchUniversityRankDetails(16);
+			break;
+		case 17:
+			searchUniversityRankDetails(17);
+			break;
+		case 18:
+			searchUniversityRankDetails(18);
+			break;
+		//defult
+		default:
+			cout << "Number not Found, Please Try Again!" << endl;
 		}
-
 	}
 
 };
