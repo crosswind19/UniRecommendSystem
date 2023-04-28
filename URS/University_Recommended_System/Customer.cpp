@@ -313,6 +313,8 @@ public:
 		else if (enterNum == 2) {
 			//Partial Match
 			for (int linear = 0; linear < size; linear++) {
+				//this will search the university name array with the user input, if found it will return the number of position
+				//If the algorithm found and match the string value, it will return the position string::npos (not found condition)
 				if (arrayValue[linear].find(searchName) != string::npos) {
 					cout << "University Rank: " << print->id << endl;
 					cout << "University Name: " << print->universityName << endl;
